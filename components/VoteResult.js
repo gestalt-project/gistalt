@@ -1,9 +1,9 @@
-import Icon from '@material-tailwind/react/Icon';
-import { useRouter } from 'next/dist/client/router'
-import { useCollection } from "react-firebase-hooks/firestore"
-import { TextButton, IconButton } from '../components/Buttons';
+// import Icon from '@material-tailwind/react/Icon';
+// import { useRouter } from 'next/dist/client/router'
+// import { useCollection } from "react-firebase-hooks/firestore"
+// import { TextButton, IconButton } from '../components/Buttons';
 import { useState, useEffect } from 'react';
-import { updateGist } from '../components/handleData';
+// import { updateGist } from '../components/handleData';
 import {round} from 'mathjs';
 
 
