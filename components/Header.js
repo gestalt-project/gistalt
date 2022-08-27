@@ -13,11 +13,15 @@ export default function Header() {
         <div>
 
             <header className='bg-github-gray sticky top-0 z-50 flex items-center px-4 py-0.5 shadow-md '>
-                <Tooltip title="About">
+                
+                {/* <Tooltip title="About">
                 <div className="p-3">
                 <IconButton onClickFunc={() => router.push("/")} icon='home' size='2xl' />
                 </div>
-                </Tooltip>
+                </Tooltip> */}
+                {/* <div className='cusor-pointer' onClick={() => router.push("/")}> */}
+                <h1 onClick={() => router.push("/")} className='hidden md:inline-flex cursor-pointer pl-7 pr-5 text-lg text-light-gray font-bold'>Gistalt</h1>
+                {/* </div> */}
 
                 <Tooltip title="Discover">
                 <div className="p-3">
@@ -34,11 +38,11 @@ export default function Header() {
                 </div>
                 </Tooltip>
                 
-                <h1 className='hidden md:inline-flex ml-2 text-lg text-gray-700 font-bold'>Gistalt</h1>
+                {/* <h1 className='hidden md:inline-flex ml-2 text-lg text-gray-700 font-bold'>Gistalt</h1> */}
 
-                <div className='mx-5 md:mx-5 flex flex-grow items-center px-5 py-1 bg-github-gray2 text-gray-700 rounded-lg focus-within:text-light-gray focus-within:shadow-md'>
+                <div className='mx-5 md:mx-5 flex flex-grow items-center px-5 py-1 bg-mid-gray text-light-gray rounded-lg focus-within:text-light-gray focus-within:shadow-md'>
                     <Icon name='search' size='2xl' color='gray-200' />
-                    <input type='text' placeholder='Search' className='flex-grow px-5 text-base bg-transparent outline-none' />
+                    <input type='text' placeholder='Search' className='flex-grow px-5 py-1 text-base bg-transparent outline-none' />
                     
                 </div>
 
