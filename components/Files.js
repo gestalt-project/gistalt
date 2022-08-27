@@ -18,22 +18,22 @@ function AllStories(props) {
     `${count} ${noun}${count !== 1 ? suffix : ''}`;
 
   return (
-    <section className={'component-style px-10 md:px-0'}>
+    <section className={'component-style page-style px-10 md:px-0'}>
       <h3 className="mx-24 py-4">All Stories</h3>
       <div className='text-sm'>
         <div className="container mx-auto">
-            <div className="flex flex-wrap -mx-12 my-4">
+            <div className="flex flex-wrap mx-12 my-4">
               {storiesSnapshot?.docs.map((doc) => (
                 <div key={doc.id} className="lg:w-1/4 md:w-1/2 w-full p-1 my-3">
-                  <div onClick={() => router.push(`/stories/${doc.id}`)} className="hover:border-2 hover:scale-[1.02] border-blue-500 bg-gray-200 max-w-xs m-1 rounded-2xl overflow-hidden shadow-lg">
+                  <div onClick={() => router.push(`/stories/${doc.id}`)} className="hover:border-2 hover:scale-[1.02] border-blue-500 bg-github-gray max-w-xs m-1 rounded-2xl overflow-hidden shadow-lg">
                     <img className="object-cover h-48 w-96" src={doc.data().storyCoverImg} alt=""/>
                     <div className="px-6 py-4">
-                      <p className="text-gray-500 text-xs pb-2">{pluralize(doc.data().storyNumContributors, 'contributor')}</p>
-                      <div className="line-clamp-1 font-bold text-lg text-gray-800 mb-3">{doc.data().storyTitle}</div>
+                      <p className="text-gray-400 font-semibold text-xs pb-2">{pluralize(doc.data().storyNumContributors, 'contributor')}</p>
+                      <div className="line-clamp-1 font-semibold text-lg text-white mb-3">{doc.data().storyTitle}</div>
                       {/* <p className="line-clamp-2 text-gray-100 text-xs overflow-hidden">{doc.data().storyDescription}</p> */}
                     </div>
                     <div className="px-6 pb-2">
-                      <p className="text-center text-gray-500 text-xs">{doc.data().storyGistIndex}/{doc.data().storyNumGists} Gists | {doc.data().storyTimestamp?.toDate().toLocaleDateString()}</p>
+                      <p className="text-center font-bold text-gray-400 text-xs">{doc.data().storyGistIndex}/{doc.data().storyNumGists} Gists | {doc.data().storyTimestamp?.toDate().toLocaleDateString()}</p>
                     </div>
                   </div>
                 </div>

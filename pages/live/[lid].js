@@ -175,8 +175,8 @@ export default function StoryPage() {
   // const web3 = createAlchemyWeb3(process.env.API_URL);  
   
   // const contract = require('../../abis/FactoryGist.json');
-  const contractABI = contract.abi;
-  const contractAddress = "0x4d1Dcc739FFfCE8068A197eeF3e4E3dBFBd3e143";
+  // const contractABI = contract.abi;
+  // const contractAddress = "0x4d1Dcc739FFfCE8068A197eeF3e4E3dBFBd3e143";
 
   const onStoryEnd = async() => { // returns {success, status}
     console.log("do stuff onStoryEnd")

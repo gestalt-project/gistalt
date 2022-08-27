@@ -57,7 +57,7 @@ function Vote(props) {
       <br></br><br></br><br></br><br></br><br></br><br></br>
       <h3 className="mx-24 mb-12">Proposals</h3>
       {activeProposals?.map((doc) => (
-        <div key={doc.id} onClick={() => handleProposalChange(doc.id)} className={`${proposalSelect === doc.id ? "border-blue-500" : ""} border-sky-500 mx-12 my-6 flex bg-white border border-gray-300 rounded-xl overflow-hidden justify-start  transition duration-100 hover:scale-[1.01] `}>
+        <div key={doc.id} onClick={() => handleProposalChange(doc.id)} className={`${proposalSelect === doc.id ? "border-blue-500" : ""} border-sky-500 mx-12 my-6 flex bg-github-gray border border-gray-300 rounded-xl overflow-hidden justify-start  transition duration-100 hover:scale-[1.01] `}>
           <div className="relative w-96 h-96 flex-shrink-0">
             <div className="w-full h-full flex items-center justify-center">
               <img alt="" className="w-full h-full object-center" src={doc.data().proposalImg}/>                 
