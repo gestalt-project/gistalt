@@ -8,17 +8,15 @@ import { useDocument } from "react-firebase-hooks/firestore"
 import { useRouter } from 'next/dist/client/router'
 import { TextButton, IconButton } from '../../components/Buttons';
 import { Canon } from '../../components/Canon';
-import { GistProposals } from '../../components/GistProposals';
+import { UserProposals } from '../../components/UserProposals';
 import { executeQuery } from '../../components/handleData';
-
 
 export default function StoryPage() {
   const { data: session, status } = useSession();
   if (!session) return <Login />
 
   const router = useRouter(),
-    { gid } = router.query,
-    [gistSnapshot] = useDocument(db.collection('gists').doc(gid)),
+    { uid } = router.query,
     [proposalsData, setProposalsData] = useState(),
     proposalsQueryProps = {
       db: db,
@@ -53,7 +51,7 @@ export default function StoryPage() {
         <div className="page-style">
 
           <br></br><br></br><br></br><br></br><br></br><br></br>
-          <UserProposals gists={proposalsData}/>
+          <UserProposals proposals={proposalsData}/>
           </div>
 
       </section>

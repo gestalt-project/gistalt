@@ -21,7 +21,7 @@ export default function Header() {
 
                 <Tooltip title="Discover">
                 <div className="p-3">
-                <IconButton onClickFunc={() => router.push("/explore")} icon='explore' size='2xl' />
+                <IconButton onClickFunc={() => router.push("/discover")} icon='explore' size='2xl' />
                 </div>
                 </Tooltip>
                 
@@ -50,7 +50,7 @@ export default function Header() {
 
                 <Tooltip title="Profile">
                 <div className="p-3">
-                <IconButton onClickFunc={() => router.push("/profile")} icon='person' size='2xl' />
+                <IconButton onClickFunc={() => router.push(`/users/${session.user.name}}`)} icon='person' size='2xl' />
                 </div>
                 </Tooltip>
                 

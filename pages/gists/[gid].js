@@ -51,7 +51,12 @@ export default function StoryPage() {
       <section className='component-style pb-10 px-10'>
         {/* <div className='max-w-3xl mx-auto'> */}
         <div className="page-style">
-        <h1 className='text-light-gray text-lg'>Gist</h1>
+        <h2 className='text-light-gray text-lg'>Gist # {gistSnapshot?.data().gistIndex}</h2>
+          <br></br><br></br><br></br>
+          <p className='text-light-gray text-sm'>Text: {gistSnapshot?.data().gistCanonText}</p>
+          <br></br><br></br><br></br>
+          <img className="w-60 h-60" src={gistSnapshot?.data().gistCanonImg} />
+
           <br></br><br></br><br></br><br></br><br></br><br></br>
           <GistProposals proposals={proposalsData}/>
           <br></br><br></br><br></br><br></br><br></br><br></br>

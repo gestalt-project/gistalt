@@ -5,11 +5,12 @@ import { useRouter } from 'next/dist/client/router'
 function UserProposals(props) {
   const router = useRouter(),
   proposals = props.proposals
+  // console.log("propopsals", proposals)
 
   return (
     <div>
 
-        <h1 className='text-light-gray text-lg'>Gist Proposals</h1>
+        <h1 className='text-light-gray text-lg'>User Proposals</h1>
           <br></br><br></br>
 
           { proposals? proposals?.map((doc, index) => (
@@ -19,6 +20,7 @@ function UserProposals(props) {
               
               <p>Text: {doc.data().proposalText}</p>
               <img width='200px' src={doc.data().proposalImg !== "" ? doc.data().proposalImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
+              <br></br>
               <TextButton onClickFunc={() => router.push(`/gists/${doc.data().proposalGist}`)} text="View other proposals in this gist" size='3xl' />
             </AccordionDetails>
 
@@ -29,4 +31,4 @@ function UserProposals(props) {
   )
 }
 
-export { GistProposals }
+export { UserProposals }

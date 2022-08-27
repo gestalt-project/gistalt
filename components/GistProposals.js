@@ -9,7 +9,7 @@ function GistProposals(props) {
   return (
     <div>
 
-        <h1 className='text-light-gray text-lg'>Gist Proposals</h1>
+        <h1 className='text-light-gray text-lg'>All Proposals</h1>
           <br></br><br></br>
 
           { proposals? proposals?.map((doc, index) => (
