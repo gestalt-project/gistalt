@@ -18,12 +18,12 @@ export default function Create() {
   const router = useRouter()
 
   const [storyData, setStoryData] = useState({
-    storyTitle: '',
-    storyDescription: '',
-    storyGistProposeInterval: '',
-    storyGistVoteInterval: '',
-    storyNumGists: '',
-    storyCoverImg: '',
+    storyTitle: null,
+    storyDescription: null,
+    storyGistProposeInterval: null,
+    storyGistVoteInterval: null,
+    storyNumGists: null,
+    storyCoverImg: null,
     // storyVotingMechanism: '',
   })
 
@@ -44,7 +44,8 @@ export default function Create() {
   
 
   const handleSubmit = (event) => {
-    if (storyData.storyTitle && storyData.storyDescription && storyData.storyCoverImg && storyData.GistProposalInterval && storyData.GistVoteInterval && storyData.NumGists) {
+    console.log("storyData", storyData)
+    if (storyData.storyTitle && storyData.storyDescription && storyData.storyCoverImg && storyData.storyGistProposeInterval && storyData.storyGistVoteInterval && storyData.storyNumGists) {
     console.log("storyData: ", storyData);
     createStory({ input: storyData, router: router, db: db, session: session });
     alert(`"${storyData.storyTitle}" created!`);
