@@ -44,10 +44,10 @@ export default function Create() {
   
 
   const handleSubmit = (event) => {
-    if (storyData.Title && storyData.Description && storyData.storyCoverImg && storyData.GistProposalInterval && storyData.GistVoteInterval && storyData.NumGists) {
+    if (storyData.storyTitle && storyData.storyDescription && storyData.storyCoverImg && storyData.GistProposalInterval && storyData.GistVoteInterval && storyData.NumGists) {
     console.log("storyData: ", storyData);
     createStory({ input: storyData, router: router, db: db, session: session });
-    alert(`"${newStoryData.storyTitle}" created!`);
+    alert(`"${storyData.storyTitle}" created!`);
     }
     else {
       alert("Please fill out all fields")
