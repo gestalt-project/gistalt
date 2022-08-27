@@ -179,7 +179,6 @@ export default function StoryPage() {
   const web3 = createAlchemyWeb3(process.env.NEXT_PUBLIC_ALC_API_URL);  
   
   const contract = require('../../abis/Gistalt.json');
-  console.log("contract.abi", contract.abi)
   const contractABI = contract.abi;
   const contractAddress = "0xA8B74b2878558923F42511e20f8a318787eEC975";
 
@@ -376,6 +375,7 @@ export default function StoryPage() {
     } 
     const tokenURI = pinataResponse.pinataUrl;  
     console.log("tokenURI: ", tokenURI)
+    console.log("contract.abi", contract.abi)
     window.contract = await new web3.eth.Contract(contractABI, contractAddress);
 
     //set up your Ethereum transaction
