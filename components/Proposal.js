@@ -22,8 +22,8 @@ function Proposal(props) {
     currentGistIndex = props.currentGistIndex,
     userProposedGist = props.userProposedGist,
     [proposalData, setProposalData] = useState({
-        proposalText: '',
-        proposalImg: '',
+        proposalText: null,
+        proposalImg: null,
       }),
     [proposed, setProposed] = useState(false)
 
@@ -49,10 +49,15 @@ function Proposal(props) {
     }, [messageFromChild]);
 
 const handleSubmitProposal = async(event) => {
+  if (proposalData.proposalImg  && proposalData.proposalText) {
     await createProposal({ input: proposalData, router: router, db: db, session: session, gid: currentGistId, sid: currentStoryId, gistIndex: currentGistIndex })
     .then((newProposalId) => {
       setProposed(true);
     })
+  }
+  else {
+    alert("Please fill out all fields")
+  }
 
 }
 

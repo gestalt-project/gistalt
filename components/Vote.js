@@ -64,8 +64,8 @@ function Vote(props) {
             </div>                   
           </div>
           <div className="p-4">                     
-            <p className="text-lg font-bold text-gray-900 line-clamp-1">Proposal for Gist #{doc.data().proposalGistIndex}</p>
-            <p className="text-sm text-gray-700 leading-10 mt-1 line-clamp-6">Text: {doc.data().proposalText}</p>               
+            <p className="text-lg font-bold text-gray-200 line-clamp-1">Proposal for Gist #{doc.data().proposalGistIndex}</p>
+            <p className="text-sm text-gray-200 leading-10 mt-1 line-clamp-6">Text: {doc.data().proposalText}</p>               
           </div>        
         </div>
       ))}
