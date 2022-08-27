@@ -9,6 +9,7 @@ module.exports = {
         current: 'currentColor',
 
         'blue': '#2196F3',
+        'theme-blue': '#2696F1',
         'highlight-purple': '#9990FF',
         'highlight-orange': '#FF7551',
         'base-gray': '#222230',
