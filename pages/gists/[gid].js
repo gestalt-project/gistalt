@@ -53,7 +53,9 @@ export default function StoryPage() {
         <div className="page-style">
         <h1 className='text-light-gray text-lg'>Gist</h1>
           <br></br><br></br><br></br><br></br><br></br><br></br>
-          <GistProposals gists={proposalsData}/>
+          <GistProposals proposals={proposalsData}/>
+          <br></br><br></br><br></br><br></br><br></br><br></br>
+          <TextButton onClickFunc={() => router.push(`/stories/${gistSnapshot.data().gistStory}`)} text="View story" size='3xl' />
           </div>
 
       </section>
