@@ -63,14 +63,15 @@ export default function StoryPage() {
     [userProposedGist, setUserProposedGist] = useState(), 
     [nowTime, setNowTime] = useState(firebase.firestore.Timestamp.now().seconds),
     [nextStatus, setNextStatus] = useState('start'),
-    [userContributedGists, setUserContributedGists] = useState()
+    [userContributedGists, setUserContributedGists] = useState(),
+    [progressPercentage, setProgressPercentage] = useState(0)
 
     const resultsInterval = 5
 
     useEffect(() => {
       loadGists()
-      setStoryGistIndex(storySnapshot?.data()?.storyGistIndex)
-      setStoryGistStage(storySnapshot?.data()?.storyGistStage)
+      setStoryGistIndex(storySnapshot?.data().storyGistIndex)
+      setStoryGistStage(storySnapshot?.data().storyGistStage)
     }, [storySnapshot, currentGistId])
 
     useEffect(() => {
@@ -80,30 +81,41 @@ export default function StoryPage() {
 
     useEffect(() => {
       setInterval(() => {setNowTime(firebase.firestore.Timestamp.now().seconds)}, 100)
-    }, [])
+      // console.log("progress percent", progressPercentage)
+    })
 
     useEffect(() => {
-      if (storySnapshot?.data()?.storyStartTimestamp) {
-        if (nowTime - storySnapshot?.data()?.storyStartTimestamp.seconds < 
-        3 + 
-        storySnapshot?.data()?.storyNumGists * (parseInt(storySnapshot?.data()?.storyGistProposeInterval) + parseInt(storySnapshot?.data()?.storyGistVoteInterval) + resultsInterval)
+      setInterval(() => {setNowTime(firebase.firestore.Timestamp.now().seconds)}, 100)
+      // console.log("progress percent", progressPercentage)
+    })
+
+    useEffect(() => {
+      if (storySnapshot?.data().storyStartTimestamp) {
+        const proposalInterval = parseInt(storySnapshot?.data().storyGistProposeInterval)
+        const voteInterval = parseInt(storySnapshot?.data().storyGistVoteInterval)
+        const storyStartTimestamp = storySnapshot?.data().storyStartTimestamp.seconds
+        const totalGistInterval = proposalInterval + voteInterval + resultsInterval
+        if (nowTime - storyStartTimestamp < 
+        3 + storySnapshot?.data().storyNumGists * (totalGistInterval)
         ) {
       console.log("stage: ", storyGistStage)
       if (storyGistStage === 'propose') {
-        if (nowTime - storySnapshot?.data()?.storyStartTimestamp.seconds > 
-        parseInt(storySnapshot?.data()?.storyGistProposeInterval) 
-        + (storyGistIndex - 1) * (parseInt(storySnapshot?.data()?.storyGistProposeInterval) + parseInt(storySnapshot?.data()?.storyGistVoteInterval) + resultsInterval)
-        ) {
+        setProgressPercentage(100 * ((proposalInterval + (storyGistIndex - 1) * (totalGistInterval)) - nowTime + storyStartTimestamp) / proposalInterval)
 
+        if (nowTime - storyStartTimestamp > 
+        proposalInterval 
+        + (storyGistIndex - 1) * (totalGistInterval)
+        ) {
           console.log("proposal stage over")
           setStoryGistStage('vote')
           updateStory({ updateData: { storyGistStage: 'vote' }, sid: lid, router: router, db: db, session: session });
         }
       }
       if (storyGistStage === 'vote') {
-        if (nowTime - storySnapshot?.data()?.storyStartTimestamp.seconds > 
-        (parseInt(storySnapshot?.data()?.storyGistProposeInterval) + parseInt(storySnapshot?.data()?.storyGistVoteInterval))
-        + (storyGistIndex - 1) * (parseInt(storySnapshot?.data()?.storyGistProposeInterval) + parseInt(storySnapshot?.data()?.storyGistVoteInterval) + resultsInterval)
+        setProgressPercentage(100 * ((proposalInterval + voteInterval + (storyGistIndex - 1) * (totalGistInterval)) - nowTime + storyStartTimestamp) / voteInterval)
+        if (nowTime - storyStartTimestamp > 
+        (proposalInterval + voteInterval)
+        + (storyGistIndex - 1) * (totalGistInterval)
         ) {
           setStoryGistStage('results')
           updateStory({ updateData: { storyGistStage: 'results' }, sid: lid, router: router, db: db, session: session });
@@ -111,17 +123,16 @@ export default function StoryPage() {
         }
       }
       if (storyGistStage === 'results') {
+        setProgressPercentage(100 * ((storyGistIndex * (totalGistInterval)) - nowTime + storyStartTimestamp) / resultsInterval)
         calculateResults()
-        if (nowTime - storySnapshot?.data()?.storyStartTimestamp.seconds >
-        storyGistIndex * (parseInt(storySnapshot?.data()?.storyGistProposeInterval) + parseInt(storySnapshot?.data()?.storyGistVoteInterval) + resultsInterval)
+        if (nowTime - storyStartTimestamp >
+        storyGistIndex * (proposalInterval + voteInterval + resultsInterval)
         ) {
           console.log("result stage over")
-          if (session.user.name === storySnapshot?.data()?.storyOriginator) {
-            console.log("session.user.name: ", session.user.name)
-            console.log("originator", storySnapshot?.data()?.storyOriginator)
-          if (nextStatus ==='ready' || nextStatus === 'start') {
+          if (session.user.email === storySnapshot?.data().storyOriginator) {
+          if (nextStatus) {
           console.log("nextStatus", nextStatus)
-          setNextStatus('executing')
+          setNextStatus(false)
           handleNext()
           }
           }
@@ -129,13 +140,6 @@ export default function StoryPage() {
       }
       if (storyGistStage === 'waiting') {
         console.log("waiting")
-      }
-    } else {
-      if (!storyComplete) {
-      console.log("storyEnd")
-      updateStory({ updateData: { storyComplete: true }, sid: lid, router: router, db: db, session: session });
-      setStoryComplete(true)
-      onStoryEnd()
       }
     }
   }
@@ -174,9 +178,9 @@ export default function StoryPage() {
   const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
   const web3 = createAlchemyWeb3(process.env.NEXT_PUBLIC_ALC_API_URL);  
   
-  // const contract = require('../../abis/FactoryGist.json');
-  // const contractABI = contract.abi;
-  // const contractAddress = "0x4d1Dcc739FFfCE8068A197eeF3e4E3dBFBd3e143";
+  const contract = require('../../abis/Gistalt.json');
+  const contractABI = contract.abi;
+  const contractAddress = "0xA8B74b2878558923F42511e20f8a318787eEC975";
 
 
   const onStoryEnd = async() => { // returns {success, status}
@@ -509,6 +513,9 @@ export default function StoryPage() {
         }
         <section className='component-style page-style'>
         <p className='text-light-gray text-sm'>Stage: {storyGistStage}</p>
+        <div className="overflow-hidden h-2 my-2 flex rounded bg-gray-200">
+          <div style={{ width: `${100 - progressPercentage}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+        </div>
         </section>
 
           { storyGistStage == 'propose' ? (

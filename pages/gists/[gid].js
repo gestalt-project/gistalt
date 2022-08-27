@@ -51,7 +51,7 @@ export default function StoryPage() {
       <section className='component-style pb-10 px-10'>
         {/* <div className='max-w-3xl mx-auto'> */}
         <div className="page-style">
-
+        <h1 className='text-light-gray text-lg'>Gist</h1>
           <br></br><br></br><br></br><br></br><br></br><br></br>
           <GistProposals gists={proposalsData}/>
           </div>

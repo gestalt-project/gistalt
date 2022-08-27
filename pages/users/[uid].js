@@ -1,46 +1,69 @@
-// about page
-
 import Head from 'next/head'
 import Header from '../../components/Header'
 import { getSession, useSession } from 'next-auth/react';
-import Login from '../../components/Login';
-import React, { useState, useEffect } from 'react';
-import { TextButton, IconButton } from '../../components/Buttons';
+import Login from '../../components/Login'
+import React, { useEffect, useState } from 'react';
+import { db } from '../../firebase';
+import { useDocument } from "react-firebase-hooks/firestore"
 import { useRouter } from 'next/dist/client/router'
+import { TextButton, IconButton } from '../../components/Buttons';
+import { Canon } from '../../components/Canon';
+import { GistProposals } from '../../components/GistProposals';
+import { executeQuery } from '../../components/handleData';
 
 
-import { Tooltip } from '@mui/material';
-
-export default function home() {
+export default function StoryPage() {
   const { data: session, status } = useSession();
   if (!session) return <Login />
 
-  const router = useRouter()
+  const router = useRouter(),
+    { gid } = router.query,
+    [gistSnapshot] = useDocument(db.collection('gists').doc(gid)),
+    [proposalsData, setProposalsData] = useState(),
+    proposalsQueryProps = {
+      db: db,
+      collectionName: 'proposals',
+      queryParams: ["proposalGist", "==", gid]
+    }
 
+    useEffect(() => {
+      loadProposals()
+    }, [])
+
+    const loadProposals = async () => {
+
+      await executeQuery(proposalsQueryProps, {property: 'numVotes', order: 'desc'})
+      .then((queryProposalsSnapshot) => {
+      setProposalsData(queryProposalsSnapshot.docs)
+      console.log("proposals data", proposalsData)
+      })}
+    
+    
   return (
     <div>
       <Head>
-        <title>Gistalt</title>
+        <title>Gestalt</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Header />
-      <div className="component-style page-style">
-        <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4" data-aos="zoom-y-out">Collaborative Story Generation with <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-gray-400">Gistalt.</span></h1>
-        <br></br><br></br><br></br><br></br><br></br>
-        <div class="flex mb-4">
-            <div class="w-1/2">
-                <h6 className= "flex-initial w-96 text-sm">Gistalt is a collective storytelling platform where people contribute to stories by generating multimodal content using AI, and decide on the canon of these stories via decentralized autonomous organizations (DAOs).</h6>
-            </div>
-            <div class="w-1/2"></div>
-        </div>
-        <br></br><br></br><br></br><br></br><br></br>
-        <TextButton onClickFunc={() => router.push(`/create`)} text="Create story" size='3xl' />
-      </div>
+
+      <section className='component-style pb-10 px-10'>
+        {/* <div className='max-w-3xl mx-auto'> */}
+        <div className="page-style">
+
+          <br></br><br></br><br></br><br></br><br></br><br></br>
+          <GistProposals gists={userGistsData}/>
+          </div>
+
+      </section>
+
     </div>
   )
-}
+            }
 
-// not sure what this is for?
+
+  
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 
@@ -50,6 +73,4 @@ export async function getServerSideProps(context) {
     },
   }
 }
-
-
 
