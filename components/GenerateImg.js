@@ -53,9 +53,9 @@ function GenerateImg(props) {
   
   const handleChange = (event) => {
     setPrompt(event.target.value);
-    setURL("https://gestalt.loca.lt/getResponse?prompt=" + event.target.value)
+    setURL(`https://gestalt.loca.lt/getResponse?prompt=${event.target.value}&idpath=${session.user.name}`)
     // setURL("http://digital-humans.loca.lt/fetch-db")
-    console.log("url is: ", URL);
+    console.log("URL is: ", URL);
   }
 
   const handleImgChange = (event) => {
