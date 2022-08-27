@@ -2,7 +2,7 @@ import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import { TextButton, IconButton } from './Buttons';
 import { useRouter } from 'next/dist/client/router'
 
-function GistProposals(props) {
+function UserProposals(props) {
   const router = useRouter(),
   proposals = props.proposals
 
@@ -19,7 +19,7 @@ function GistProposals(props) {
               
               <p>Text: {doc.data().proposalText}</p>
               <img width='200px' src={doc.data().proposalImg !== "" ? doc.data().proposalImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
-              {/* <TextButton onClickFunc={() => router.push(`/gists/${doc.id}`)} text="View proposal details" size='3xl' /> */}
+              <TextButton onClickFunc={() => router.push(`/gists/${doc.data().proposalGist}`)} text="View other proposals in this gist" size='3xl' />
             </AccordionDetails>
 
           </Accordion>

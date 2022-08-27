@@ -16,7 +16,7 @@ function VoteResult(props) {
 
   //   if (voteResults) {
     const getPercentage = (voteResults) => {
-        console.log("HELLO", voteResults)
+        // console.log("HELLO", voteResults)
         const totalVotes = voteResults.reduce((a, b) => a + b[1], 0)
         const votePercentages = voteResults.map((vote) => {
           return [vote[0], round(vote[1] / totalVotes * 100)]

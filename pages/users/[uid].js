@@ -23,7 +23,7 @@ export default function StoryPage() {
     proposalsQueryProps = {
       db: db,
       collectionName: 'proposals',
-      queryParams: ["proposalGist", "==", gid]
+      queryParams: ["proposalContributor", "==", session.user.name]
     }
 
     useEffect(() => {
@@ -53,7 +53,7 @@ export default function StoryPage() {
         <div className="page-style">
 
           <br></br><br></br><br></br><br></br><br></br><br></br>
-          <GistProposals gists={userGistsData}/>
+          <UserProposals gists={proposalsData}/>
           </div>
 
       </section>

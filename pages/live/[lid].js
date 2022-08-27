@@ -95,8 +95,9 @@ export default function StoryPage() {
         const voteInterval = parseInt(storySnapshot?.data().storyGistVoteInterval)
         const storyStartTimestamp = storySnapshot?.data().storyStartTimestamp.seconds
         const totalGistInterval = proposalInterval + voteInterval + resultsInterval
+        const storyNumGists = storySnapshot?.data().storyNumGists
         if (nowTime - storyStartTimestamp < 
-        3 + storySnapshot?.data().storyNumGists * (totalGistInterval)
+        3 + storyNumGists * (totalGistInterval)
         ) {
       console.log("stage: ", storyGistStage)
       if (storyGistStage === 'propose') {
@@ -129,7 +130,7 @@ export default function StoryPage() {
         storyGistIndex * (proposalInterval + voteInterval + resultsInterval)
         ) {
           console.log("result stage over")
-          if (session.user.email === storySnapshot?.data().storyOriginator) {
+          if (session.user.name === storySnapshot?.data().storyOriginator) {
           if (nextStatus) {
           console.log("nextStatus", nextStatus)
           setNextStatus(false)
