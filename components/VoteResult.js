@@ -9,12 +9,9 @@ import {round} from 'mathjs';
 
 function VoteResult(props) {
   const voteResults = props.voteResults, 
-  gistCanonProposalId = props.gistCanonProposalId,
-  [voteResultsPercentages, setVoteResultsPercentages] = useState()
+  activeProposals = props.activeProposals,
+  gistCanonProposalId = props.gistCanonProposalId
 
-  console.log("voteResults", voteResults)
-
-  //   if (voteResults) {
     const getPercentage = (voteResults) => {
         console.log("HELLO", voteResults)
         const totalVotes = voteResults.reduce((a, b) => a + b[1], 0)
@@ -23,24 +20,37 @@ function VoteResult(props) {
         }).sort((a, b) => b[1] - a[1])
         return votePercentages
       }
-//       setVoteResultsPercentages(getPercentage(voteResults))
-//   }
+
+    useEffect(() => {        
+      console.log("activeProposals", activeProposals)
+      console.log("gistCanonProposalId", gistCanonProposalId)
+      const newCanonText = activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0].data().proposalText
+      const newCanonImg = activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0].data().proposalImg
 
   return (
     <section className={'component-style px-0 md:px-0'}>
       <h3 className="mx-24 my-12">Results</h3>
       {voteResults !== {} && voteResults ? (
         <div>
-      {getPercentage(Object.entries(voteResults)).map(([key, value]) => (
-        <div key={key} className="relative pt-1 mx-32">
-        <p className=" ml-2 text-base text-gray-500">{key}</p>
-        <div className="overflow-hidden h-2 mb-4 flex rounded bg-gray-200">
+          <Accordion className="bg-base-gray border text-light-gray text-sm">
+            <AccordionSummary>Winner: </AccordionSummary>
+            <AccordionDetails>
+              
+              <p>Text: {newCanonText}</p>
+              <img width='200px' src={newCanonImg !== "" ? newCanonImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
+            </AccordionDetails>
 
-        <div style={{ width: `${value}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+          </Accordion>
+        
+          {getPercentage(Object.entries(voteResults)).map(([key, value]) => (
+            <div key={key} className="relative pt-1 mx-32">
+              <p className=" ml-2 text-base text-gray-500">{key}</p>
+              <div className="overflow-hidden h-2 mb-4 flex rounded bg-gray-200">
+                <div style={{ width: `${value}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+              </div>
+            </div>
+          ))}
         </div>
-    </div>
-      ))}
-      </div>
       )
       : (<p>No votes</p>)
       }

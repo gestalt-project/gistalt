@@ -534,7 +534,7 @@ export default function StoryPage() {
         
           : storyGistStage == 'results' ? (
             <section className='component-style page-style'>
-            <VoteResult gistCanonProposalId={gistCanonProposalId} voteResults={voteResults}/>
+            <VoteResult activeProposals={activeProposals} gistCanonProposalId={gistCanonProposalId} voteResults={voteResults}/>
             </section>
           ) : null 
         
