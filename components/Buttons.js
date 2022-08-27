@@ -10,7 +10,7 @@ function TextButton(props) {
             // color='transparent'
             buttonType='text'
             ripple='light'
-            className='border-0 hover:bg-mid-gray'
+            className='border-0 bg-blue-500 hover:bg-mid-gray'
             onClick={onClickFunc}
         >
             {text}
@@ -28,7 +28,7 @@ function IconButton(props) {
             buttonType='outline'
             iconOnly={true}
             ripple='light'
-            className='border-0 hover:bg-mid-gray'
+            className='border-0 bg-blue-500 hover:bg-mid-gray'
             onClick={onClickFunc}
         >
             <Icon color={props.color ? props.color : 'gray'} name={icon} size={props.size ? props.size : '3xl'} />
@@ -42,11 +42,10 @@ function BlueButton(props) {
 
     return (
         <Button
-            color='blue'
             buttonType='outline'
             iconOnly={true}
             ripple='dark'
-            className='border-0'
+            className='border-0 bg-blue-500'
             onClick={onClickFunc}
         >
             <Icon name={icon} size='3x1' />

@@ -42,7 +42,7 @@ function GenerateImg(props) {
 
     setImgArray(loadingArray)
     try {
-    const { data } = await axios.post("URL")
+    const { data } = await axios.post(URL)
     setImgArray(data)
   } catch (error) {
     alert("Error generating image. Please try again.")
