@@ -24,6 +24,10 @@ function GenerateImg(props) {
   const [imgArray, setImgArray] = useState(emptyArray);
   const [storyText, setStoryText] = useState('');
   const [imgSelect, setImgSelect] = useState('');
+
+  useEffect(() => {
+    sendDataToParent("init");
+  }, [])
   
   useEffect(() => {
     console.log("GenerateImg useEffect")
@@ -41,11 +45,14 @@ function GenerateImg(props) {
     }
 
     setImgArray(loadingArray)
-    const { data } = await axios.post(URL);
+    try {
+    const { data } = await axios.post("URL")
     setImgArray(data)
-    // setImgArray(emptyArray)
-    
-    console.log("imgArray is: ", imgArray);
+  } catch (error) {
+    alert("Error generating image. Please try again.")
+    setImgArray(emptyArray)
+  }
+  // console.log("imgArray is: ", imgArray);
   }
   
   const handleChange = (event) => {
