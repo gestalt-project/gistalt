@@ -58,20 +58,21 @@ export default function StoryPage() {
       collectionName: 'gists',
       queryParams: ["gistStory", "==", sid]
     }),
+
+    [progressPercentage, setProgressPercentage] = useState(0),
     [storyComplete, setStoryComplete] = useState(storySnapshot?.data()?.storyComplete),
     
     [userProposedGist, setUserProposedGist] = useState(), 
     [nowTime, setNowTime] = useState(firebase.firestore.Timestamp.now().seconds),
     [nextStatus, setNextStatus] = useState('start'),
-    [userContributedGists, setUserContributedGists] = useState(),
-    [progressPercentage, setProgressPercentage] = useState(0)
+    [userContributedGists, setUserContributedGists] = useState()
 
     const resultsInterval = 5
 
     useEffect(() => {
       loadGists()
-      setStoryGistIndex(storySnapshot?.data().storyGistIndex)
-      setStoryGistStage(storySnapshot?.data().storyGistStage)
+      setStoryGistIndex(storySnapshot?.data()?.storyGistIndex)
+      setStoryGistStage(storySnapshot?.data()?.storyGistStage)
     }, [storySnapshot, currentGistId])
 
     useEffect(() => {
@@ -81,13 +82,7 @@ export default function StoryPage() {
 
     useEffect(() => {
       setInterval(() => {setNowTime(firebase.firestore.Timestamp.now().seconds)}, 100)
-      // console.log("progress percent", progressPercentage)
-    })
-
-    useEffect(() => {
-      setInterval(() => {setNowTime(firebase.firestore.Timestamp.now().seconds)}, 100)
-      // console.log("progress percent", progressPercentage)
-    })
+    }, [])
 
     useEffect(() => {
       if (storySnapshot?.data().storyStartTimestamp) {
@@ -130,10 +125,12 @@ export default function StoryPage() {
         storyGistIndex * (proposalInterval + voteInterval + resultsInterval)
         ) {
           console.log("result stage over")
-          if (session.user.name === storySnapshot?.data().storyOriginator) {
-          if (nextStatus) {
+          if (session.user.name === storySnapshot?.data()?.storyOriginator) {
+            console.log("session.user.name: ", session.user.name)
+            console.log("originator", storySnapshot?.data()?.storyOriginator)
+          if (nextStatus ==='ready' || nextStatus === 'start') {
           console.log("nextStatus", nextStatus)
-          setNextStatus(false)
+          setNextStatus('executing')
           handleNext()
           }
           }
@@ -141,6 +138,13 @@ export default function StoryPage() {
       }
       if (storyGistStage === 'waiting') {
         console.log("waiting")
+      }
+    } else {
+      if (!storyComplete) {
+      console.log("storyEnd")
+      updateStory({ updateData: { storyComplete: true }, sid: lid, router: router, db: db, session: session });
+      setStoryComplete(true)
+      onStoryEnd()
       }
     }
   }
