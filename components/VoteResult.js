@@ -5,12 +5,16 @@
 import { useState, useEffect } from 'react';
 // import { updateGist } from '../components/handleData';
 import {round} from 'mathjs';
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
+
 
 
 function VoteResult(props) {
   const voteResults = props.voteResults, 
   activeProposals = props.activeProposals,
   gistCanonProposalId = props.gistCanonProposalId
+  const [newCanonText, setNewCanonText] = useState();
+  const [newCanonImg, setNewCanonImg] = useState();
 
     const getPercentage = (voteResults) => {
         // console.log("HELLO", voteResults)
@@ -24,16 +28,20 @@ function VoteResult(props) {
     useEffect(() => {        
       console.log("activeProposals", activeProposals)
       console.log("gistCanonProposalId", gistCanonProposalId)
-      const newCanonText = activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0].data().proposalText
-      const newCanonImg = activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0].data().proposalImg
+      {gistCanonProposalId?(
+        setNewCanonText(activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0].data().proposalText),
+        setNewCanonImg(activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0].data().proposalImg)
+
+      ): console.log("hello")}
+    }, [gistCanonProposalId, activeProposals])
 
   return (
     <section className={'component-style px-0 md:px-0'}>
       <h3 className="mx-24 my-12">Results</h3>
       {voteResults !== {} && voteResults ? (
         <div>
+          <h1>Winner: </h1>
           <Accordion className="bg-base-gray border text-light-gray text-sm">
-            <AccordionSummary>Winner: </AccordionSummary>
             <AccordionDetails>
               
               <p>Text: {newCanonText}</p>
