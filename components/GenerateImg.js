@@ -24,10 +24,6 @@ function GenerateImg(props) {
   const [imgArray, setImgArray] = useState(emptyArray);
   const [storyText, setStoryText] = useState('');
   const [imgSelect, setImgSelect] = useState('');
-
-  useEffect(() => {
-    sendDataToParent("init");
-  }, [])
   
   useEffect(() => {
     console.log("GenerateImg useEffect")
@@ -64,7 +60,7 @@ function GenerateImg(props) {
 
   const handleImgChange = (event) => {
     setImgSelect(event.target.value)
-    sendDataToParent(imgArray[imgSelect]);
+    sendDataToParent(imgArray[event.target.value]);
   }
 
 
