@@ -1,9 +1,9 @@
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/dist/client/router';
 import { Tooltip } from '@mui/material';
 import Icon from '@material-tailwind/react/Icon';
 import 'rsuite/dist/rsuite.min.css';
-import { IconButton } from '../components/Buttons';
+import { TextButton, IconButton } from '../components/Buttons';
 
 export default function Header() {
     const { data: session, status } = useSession(),
@@ -13,15 +13,15 @@ export default function Header() {
         <div>
 
             <header className='bg-github-gray sticky top-0 z-50 flex items-center px-4 py-0.5 shadow-md '>
-                <Tooltip title="Home">
+                <Tooltip title="About">
                 <div className="p-3">
                 <IconButton onClickFunc={() => router.push("/")} icon='home' size='2xl' />
                 </div>
                 </Tooltip>
 
-                <Tooltip title="Following">
+                <Tooltip title="Discover">
                 <div className="p-3">
-                <IconButton onClickFunc={() => router.push("/propose")} icon='list' size='2xl' />
+                <IconButton onClickFunc={() => router.push("/explore")} icon='explore' size='2xl' />
                 </div>
                 </Tooltip>
                 
@@ -42,11 +42,11 @@ export default function Header() {
                     
                 </div>
 
-                <Tooltip title="Messages">
+                {/* <Tooltip title="Messages">
                 <div className="p-3">
                 <IconButton onClickFunc={() => router.push("/messages")} icon='message' size='2xl' />
                 </div>
-                </Tooltip>
+                </Tooltip> */}
 
                 <Tooltip title="Profile">
                 <div className="p-3">
@@ -56,22 +56,23 @@ export default function Header() {
                 
                 <Tooltip title="Sign Out">
                 <div className="p-3">
-                <img
+                {/* <img
                     loading='lazy'
                     className='hidden md:inline flex cursor-pointer h-8 w-8 rounded-full ml-2 object-cover'
-                    src={session?.user?.image}
+                    src={session?.user?.img}
                     // src="https://static.wixstatic.com/media/51fb1a_995dc68a3bd046389fc42220e99574c4~mv2.jpg/v1/crop/x_0,y_173,w_3006,h_2909/fill/w_694,h_672,al_c,q_85,usm_0.66_1.00_0.01/Portrait_JPG.webp"
-                    alt={session?.user?.email}
-                />
+                    alt={session?.user?.name}
+                /> */}
+                <TextButton onClickFunc={signOut} text={`${session?.user?.name.slice(0, 10)}...`} size='3xl' />
                 </div>
                 </Tooltip>
 
-                <Tooltip title="About">
+                {/* <Tooltip title="About">
                 <div className="p-3">
                 <IconButton onClickFunc={() => router.push("/about")} icon='more_vert' size='2xl' />
                 </div>
                 </Tooltip>
-                
+                 */}
             </header>
         </div>
     );

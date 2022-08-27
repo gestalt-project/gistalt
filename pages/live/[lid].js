@@ -171,12 +171,12 @@ export default function StoryPage() {
       });
   };
 
-  // const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-  // const web3 = createAlchemyWeb3(process.env.API_URL);  
+  const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+  const web3 = createAlchemyWeb3(process.env.NEXT_PUBLIC_ALC_API_URL);  
   
-  // const contract = require('../../abis/FactoryGist.json');
+  const contract = require('../../abis/Gistalt.json');
   const contractABI = contract.abi;
-  const contractAddress = "0x4d1Dcc739FFfCE8068A197eeF3e4E3dBFBd3e143";
+  const contractAddress = "0x06A6325B566d15eBC77c1ABBa83C7670a03C2d23";
 
   const onStoryEnd = async() => { // returns {success, status}
     console.log("do stuff onStoryEnd")
@@ -332,47 +332,115 @@ export default function StoryPage() {
       newGistId ? setNextStatus('ready') : setNextStatus('executing')
   }
 
-  const mintNFT = async(gistData) => {
-    alert("NFT minted :)")
-    console.log("gistData", gistData)
-    console.log("gistIndex: ", gistData.gistIndex)
-    console.log("gistText: ", gistData.gistCanonText)
-    // const imgURL = "https://i.pinimg.com/originals/e8/a5/3d/e8a53d53d55976b2f16034d3e6e1f5f9.jpg"
-    // console.log("minting NFT with placeholder image: ", gistData.gistCanonImg)
-    // 
-    // const gistName = "Gist" + gistData.gistIndex;
+    // const mintNFT = async(gistData) => {
+  //   alert("NFT minted :)")
+  //   console.log("gistData", gistData)
+  //   console.log("gistIndex: ", gistData.gistIndex)
+  //   console.log("gistText: ", gistData.gistCanonText)
+  //   // const imgURL = "https://i.pinimg.com/originals/e8/a5/3d/e8a53d53d55976b2f16034d3e6e1f5f9.jpg"
+  //   // console.log("minting NFT with placeholder image: ", gistData.gistCanonImg)
+  //   // 
 
-    // const currentERCIndex = 6;
 
-    // console.log(currentERCIndex);
-    // console.log(gistName);
+  const mintNFT = async (gistData) => {
+    const url = gistData.gistCanonImg
+    const name = `Gist ${gistData.gistIndex}`
+    const description = gistData.gistCanonText
 
-    // const transactionParameters = {
-    //   to: contractAddress, // Required except during contract publications.
-    //   from: window.ethereum.selectedAddress, // must match user's active address.
-    //   'data': window.contract.methods.mintERC1155(currentERCIndex, gistName, 1).encodeABI() //make call to NFT smart contract 
-    // };
+    // error handling
+    if (url.trim() == "" || (name.trim() == "" || description.trim() == "")) { 
+        return {
+         success: false,
+         status: "Please make sure all fields are completed before minting.",
+        }
+    }
+    
+    //make metadata
+    const metadata = new Object();
+    metadata.name = name;
+    metadata.image = url;
+    metadata.description = description;
+    //make pinata call
+    const pinataResponse = await pinJSONToIPFS(metadata);
+    if (!pinataResponse.success) {
+        return {
+            success: false,
+            status: "Something went wrong while uploading your tokenURI.",
+        }
+    } 
+    const tokenURI = pinataResponse.pinataUrl;  
+    console.log("tokenURI: ", tokenURI)
+    window.contract = await new web3.eth.Contract(contractABI, contractAddress);
 
-    // //sign transaction via Metamask
-    // try {
-    //   const txHash = await window.ethereum
-    //       .request({
-    //           method: 'eth_sendTransaction',
-    //           params: [transactionParameters],
-    //       });
-    //   //return {
-    //   //    success: true,
-    //   console.log("Check out your transaction on Etherscan: https://goerli.etherscan.io/tx/" + txHash);
-    //   //}
-    // } catch (error) {
-    //   console.log("error");
-    //   //return {
-    //   //    success: false,
-    //   console.log("Something went wrong: " + error.message);
-    //   //}
-    // }
+    //set up your Ethereum transaction
+    const transactionParameters = {
+        to: contractAddress, // Required except during contract publications.
+        from: window.ethereum.selectedAddress, // must match user's active address.
+        'data': window.contract.methods.mintNFT(window.ethereum.selectedAddress, tokenURI).encodeABI() //make call to NFT smart contract 
+    };
+    console.log("transactionParameters", transactionParameters)
 
-  }
+    //sign transaction via Metamask
+    try {
+        const txHash = await window.ethereum
+            .request({
+                method: 'eth_sendTransaction',
+                params: [transactionParameters],
+            });
+        // return {
+            // success: true,
+            console.log("Check out your transaction on Etherscan: https://goerli.etherscan.io/tx/" + txHash)
+        // }
+    } catch (error) {
+        // return {
+        //     success: false,
+            console.log("Something went wrong: " + error.message)
+        // }
+    }
+}
+
+  // const mintNFT = async(gistData) => {
+  //   alert("NFT minted :)")
+  //   console.log("gistData", gistData)
+  //   console.log("gistIndex: ", gistData.gistIndex)
+  //   console.log("gistText: ", gistData.gistCanonText)
+  //   // const imgURL = "https://i.pinimg.com/originals/e8/a5/3d/e8a53d53d55976b2f16034d3e6e1f5f9.jpg"
+  //   // console.log("minting NFT with placeholder image: ", gistData.gistCanonImg)
+  //   // 
+  //   // const gistName = "Gist" + gistData.gistIndex;
+
+  //   // const currentERCIndex = 6;
+
+  //   // console.log(currentERCIndex);
+  //   // console.log(gistName);
+
+  //   // const transactionParameters = {
+  //   //   to: contractAddress, // Required except during contract publications.
+  //   //   from: window.ethereum.selectedAddress, // must match user's active address.
+  //   //   'data': window.contract.methods.mintERC1155(currentERCIndex, gistName, 1).encodeABI() //make call to NFT smart contract 
+  //   // };
+
+  //   // //sign transaction via Metamask
+  //   // try {
+  //   //   const txHash = await window.ethereum
+  //   //       .request({
+  //   //           method: 'eth_sendTransaction',
+  //   //           params: [transactionParameters],
+  //   //       });
+  //   //   //return {
+  //   //   //    success: true,
+  //   //   console.log("Check out your transaction on Etherscan: https://goerli.etherscan.io/tx/" + txHash);
+  //   //   //}
+  //   // } catch (error) {
+  //   //   console.log("error");
+  //   //   //return {
+  //   //   //    success: false,
+  //   //   console.log("Something went wrong: " + error.message);
+  //   //   //}
+  //   // }
+
+  // }
+  
 
   return (
     <div>
