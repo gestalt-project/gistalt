@@ -27,7 +27,7 @@ function GenerateImg(props) {
   
   useEffect(() => {
     console.log("GenerateImg useEffect")
-}, [imgArray]);
+}, [imgArray, imgSelect]);
 
   const sendDataToParent = props.sendDataToParent;
 
@@ -78,19 +78,19 @@ function GenerateImg(props) {
 
 
       <div className="grid grid-cols-4 gap-4 py-4 flex items-center">
-        <label className="mb-4">
+        <label className="mb-4 cursor-pointer">
           <input type="radio" name="test" value={0} onClick={handleImgChange} readOnly=""/>
           <img src={ imgArray[0] } className="max-w-full h-auto hover:scale-90 transform transition duration-200" alt="" />
         </label>
-        <label className="mb-4">
+        <label className="mb-4 cursor-pointer">
           <input type="radio" name="test" value={1} onClick={handleImgChange} readOnly=""/>
           <img src={ imgArray[1] } className="max-w-full h-auto hover:scale-90 transform transition duration-200" alt="" />
         </label>
-        <label className="mb-4">
+        <label className="mb-4 cursor-pointer">
           <input type="radio" name="test" value={2} onClick={handleImgChange} readOnly=""/>
           <img src={ imgArray[2] } className="max-w-full h-auto hover:scale-90 transform transition duration-200" alt="" />
         </label>
-        <label className="mb-4">
+        <label className="mb-4 cursor-pointer">
           <input type="radio" name="test" value={3} onClick={handleImgChange} readOnly=""/>
           <img src={ imgArray[3] } className="max-w-full h-auto hover:scale-90 transform transition duration-200" alt="" />
         </label>      
