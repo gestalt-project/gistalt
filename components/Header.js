@@ -20,7 +20,7 @@ export default function Header() {
                 </div>
                 </Tooltip> */}
                 {/* <div className='cusor-pointer' onClick={() => router.push("/")}> */}
-                <h1 onClick={() => router.push("/")} className='hidden md:inline-flex cursor-pointer pl-7 pr-5 text-lg text-light-gray font-bold'>Gistalt</h1>
+                <h1 onClick={() => router.push("/")} className='hidden md:inline-flex cursor-pointer pl-7 pr-5 text-lg text-light-gray font-poppins tracking-widest'><span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-gray-300">Gistalt</span></h1>
                 {/* </div> */}
 
                 <Tooltip title="Discover">
@@ -40,9 +40,9 @@ export default function Header() {
                 
                 {/* <h1 className='hidden md:inline-flex ml-2 text-lg text-gray-700 font-bold'>Gistalt</h1> */}
 
-                <div className='mx-5 md:mx-5 flex flex-grow items-center px-5 py-1 bg-mid-gray text-light-gray rounded-lg focus-within:text-light-gray focus-within:shadow-md'>
-                    <Icon name='search' size='2xl' color='gray-200' />
-                    <input type='text' placeholder='Search' className='flex-grow px-5 py-1 text-base bg-transparent outline-none' />
+                <div className='mx-5 md:mx-5 flex flex-grow items-center px-5 py-1 bg-github-gray2 text-mid-gray rounded-lg focus-within:text-light-gray focus-within:shadow-md'>
+                    <Icon name='search' size='2xl' color='' />
+                    <input type='text' placeholder='Search' className='flex-grow px-5 py-1 placeholder-mid-gray text-base bg-transparent outline-none' />
                     
                 </div>
 

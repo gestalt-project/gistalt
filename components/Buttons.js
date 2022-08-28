@@ -31,7 +31,7 @@ function IconButton(props) {
             className='border-0 bg-blue-500 hover:bg-mid-gray'
             onClick={onClickFunc}
         >
-            <Icon color={props.color ? props.color : 'gray'} name={icon} size={props.size ? props.size : '3xl'} />
+            <Icon color={props.color ? props.color : 'white'} name={icon} size={props.size ? props.size : '3xl'} />
         </Button>
     )
 }

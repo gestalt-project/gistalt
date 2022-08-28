@@ -111,10 +111,12 @@ export default function Create() {
               defaultValue="female"
               name="radio-buttons-group"
             >
-              <FormControlLabel name="storyGistProposeInterval" value="15" control={<Radio />} label="dev 15s" onChange={ handleInputChange }/>
+              <FormControlLabel  name="storyGistProposeInterval" value="15" control={<Radio />} label="dev 15s" onChange={ handleInputChange }/>
+              <FormControlLabel name="storyGistProposeInterval" value="30" control={<Radio />} label="30 seconds" onChange={ handleInputChange }/>
               <FormControlLabel name="storyGistProposeInterval" value="60" control={<Radio />} label="1 minute" onChange={ handleInputChange }/>
-              <FormControlLabel name="storyGistProposeInterval" value="900" control={<Radio />} label="15 minutes" onChange={ handleInputChange }/>
-              <FormControlLabel name="storyGistProposeInterval" value="3600" control={<Radio />} label="60 minutes" onChange={ handleInputChange }/>
+              <FormControlLabel name="storyGistProposeInterval" value="300" control={<Radio />} label="5 minutes" onChange={ handleInputChange }/>
+              <FormControlLabel name="storyGistProposeInterval" value="1200" control={<Radio />} label="20 minutes" onChange={ handleInputChange }/>
+              {/* <FormControlLabel name="storyGistProposeInterval" value="3600" control={<Radio />} label="60 minutes" onChange={ handleInputChange }/> */}
             </RadioGroup>
 
             <label className="mt-6 block mb-2 text-sm font-bold font-medium text-white dark:text-gray-400">How long will the voting period be / gist? </label>
@@ -124,9 +126,10 @@ export default function Create() {
               name="radio-buttons-group"
             >
               <FormControlLabel name="storyGistVoteInterval" value="15" control={<Radio />} label="dev 15s" onChange={ handleInputChange }/>
+              <FormControlLabel name="storyGistVoteInterval" value="30" control={<Radio />} label="30 seconds" onChange={ handleInputChange }/>
               <FormControlLabel name="storyGistVoteInterval" value="60" control={<Radio />} label="1 minute" onChange={ handleInputChange }/>
-              <FormControlLabel name="storyGistVoteInterval" value="900" control={<Radio />} label="15 minutes" onChange={ handleInputChange }/>
-              <FormControlLabel name="storyGistVoteInterval" value="3600" control={<Radio />} label="60 minutes" onChange={ handleInputChange }/>
+              <FormControlLabel name="storyGistVoteInterval" value="300" control={<Radio />} label="5 minutes" onChange={ handleInputChange }/>
+              <FormControlLabel name="storyGistVoteInterval" value="1200" control={<Radio />} label="20 minutes" onChange={ handleInputChange }/>
             </RadioGroup>
 
             <br></br>

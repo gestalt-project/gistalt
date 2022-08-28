@@ -10,9 +10,6 @@ function UserProposals(props) {
   return (
     <div>
 
-        <h1 className='text-light-gray text-lg'>User Proposals</h1>
-          <br></br><br></br>
-
           { proposals? proposals?.map((doc, index) => (
           <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionSummary>Proposal # {index + 1}</AccordionSummary>

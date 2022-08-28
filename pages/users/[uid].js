@@ -50,6 +50,8 @@ export default function StoryPage() {
         {/* <div className='max-w-3xl mx-auto'> */}
         <div className="page-style">
 
+        <h1 className='text-light-gray text-lg'>Your Proposals</h1>
+
           <br></br><br></br><br></br><br></br><br></br><br></br>
           <UserProposals proposals={proposalsData}/>
           </div>
