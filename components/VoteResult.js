@@ -25,22 +25,22 @@ function VoteResult(props) {
         return votePercentages
       }
 
-    useEffect(() => {        
-      console.log("activeProposals", activeProposals)
-      console.log("gistCanonProposalId", gistCanonProposalId)
-      {gistCanonProposalId?(
-        setNewCanonText(activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0].data().proposalText),
-        setNewCanonImg(activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0].data().proposalImg)
+    // useEffect(() => {        
+    //   console.log("activeProposals", activeProposals)
+    //   console.log("gistCanonProposalId", gistCanonProposalId)
+    //   {gistCanonProposalId?(
+    //     setNewCanonText(activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0].data().proposalText),
+    //     setNewCanonImg(activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0].data().proposalImg)
 
-      ): console.log("hello")}
-    }, [gistCanonProposalId, activeProposals])
+    //   ): console.log("hello")}
+    // }, [gistCanonProposalId, activeProposals])
 
   return (
     <section className={'component-style px-0 md:px-0'}>
       <h3 className="my-12">Results</h3>
       {voteResults !== {} && voteResults ? (
         <div>
-          <h4 className="pb-4">Winner</h4>
+          {/* <h4 className="pb-4">Winner</h4>
           <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionDetails>
               
@@ -48,7 +48,7 @@ function VoteResult(props) {
               <img width='200px' src={newCanonImg !== "" ? newCanonImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
             </AccordionDetails>
 
-          </Accordion>
+          </Accordion> */}
         
           {getPercentage(Object.entries(voteResults)).map(([key, value]) => (
             <div key={key} className="relative pt-1 mx-32">
