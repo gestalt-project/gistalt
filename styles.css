@@ -20,6 +20,12 @@ html {
 
       font: 5px 'Poppins', sans-serif;
     }
+    .footer-style {
+      background-color: #181c24;
+      color: #FFFFFF;
+      width: 100%;
+      font: 5px 'Poppins', sans-serif;
+    }
     /* .fancy-font {
 
     } */

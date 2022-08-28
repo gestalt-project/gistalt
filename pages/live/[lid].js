@@ -519,13 +519,6 @@ export default function StoryPage() {
         </section>
 
         }
-        <section className='component-style page-style'>
-        <p className='text-light-gray text-sm'>Stage: {storyGistStage}</p>
-        <div className="overflow-hidden h-2 my-4 flex rounded bg-gray-200">
-          <div style={{ width: `${100 - progressPercentage}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
-        </div>
-        </section>
-
           { storyGistStage == 'propose' ? (
             
             <div>
@@ -546,8 +539,19 @@ export default function StoryPage() {
           ) : null 
         
           }
+          {/* <footer style={{ position: 'fixed', bottom: 0}} className="bg-white"> */}
+        <section style={{ position: 'fixed', bottom: 0}} className=' footer-style'>
+          <div className="px-32 py-2 pt-4">
+            <p className='text-light-gray text-sm'>Stage: {storyGistStage}</p>
+            <div className="overflow-hidden h-2 my-4 flex rounded bg-gray-200">
+              <div style={{ width: `${100 - progressPercentage}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+            </div>
+            </div>
+        </section>
+        {/* </footer> */}
           </>
         }
+
                     {/* <section className='component-style page-style pb-10 px-10'>
           <TextButton onClickFunc={() => setStoryGistStage('propose')} text="set stage: propose" size='3xl' />
           <TextButton onClickFunc={() => setStoryGistStage('vote')} text="set stage: vote" size='3xl' />

@@ -71,7 +71,7 @@ const handleSubmitProposal = async(event) => {
         {proposed ? (
           <div>
           <h1 className='text-light-gray text-lg'>Your Proposal for Gist #{currentGistIndex}</h1>
-          <br></br><br></br>
+          <br></br>
           <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionSummary>Gist #{currentGistIndex}</AccordionSummary>
             <AccordionDetails>
