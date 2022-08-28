@@ -126,7 +126,7 @@ export default function Create() {
               name="radio-buttons-group"
 
             >
-              <FormControlLabel  name="storyGistProposeInterval" value="15" control={<Radio sx={{ color: blue[50], '&.Mui-checked': { color: "primary", }, }}/>} label="dev 15s" onChange={ handleInputChange }/>
+              {/* <FormControlLabel  name="storyGistProposeInterval" value="15" control={<Radio sx={{ color: blue[50], '&.Mui-checked': { color: "primary", }, }}/>} label="dev 15s" onChange={ handleInputChange }/> */}
               <FormControlLabel name="storyGistProposeInterval" value="30" control={<Radio sx={{ color: blue[50], '&.Mui-checked': { color: "primary", }, }}/>} label="30 seconds" onChange={ handleInputChange }/>
               <FormControlLabel name="storyGistProposeInterval" value="60" control={<Radio sx={{ color: blue[50], '&.Mui-checked': { color: "primary", }, }}/>} label="1 minute" onChange={ handleInputChange }/>
               <FormControlLabel name="storyGistProposeInterval" value="300" control={<Radio sx={{ color: blue[50], '&.Mui-checked': { color: "primary", }, }}/>} label="5 minutes" onChange={ handleInputChange }/>
@@ -140,7 +140,7 @@ export default function Create() {
               defaultValue="female"
               name="radio-buttons-group"
             >
-              <FormControlLabel name="storyGistVoteInterval" value="15" control={<Radio sx={{ color: blue[50], '&.Mui-checked': { color: "primary", }, }}/>} label="dev 15s" onChange={ handleInputChange }/>
+              {/* <FormControlLabel name="storyGistVoteInterval" value="15" control={<Radio sx={{ color: blue[50], '&.Mui-checked': { color: "primary", }, }}/>} label="dev 15s" onChange={ handleInputChange }/> */}
               <FormControlLabel name="storyGistVoteInterval" value="30" control={<Radio sx={{ color: blue[50], '&.Mui-checked': { color: "primary", }, }}/>} label="30 seconds" onChange={ handleInputChange }/>
               <FormControlLabel name="storyGistVoteInterval" value="60" control={<Radio sx={{ color: blue[50], '&.Mui-checked': { color: "primary", }, }}/>} label="1 minute" onChange={ handleInputChange }/>
               <FormControlLabel name="storyGistVoteInterval" value="300" control={<Radio sx={{ color: blue[50], '&.Mui-checked': { color: "primary", }, }}/>} label="5 minutes" onChange={ handleInputChange }/>
