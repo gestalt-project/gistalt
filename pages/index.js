@@ -33,16 +33,20 @@ export default function home() {
       </Head>
       <Header />
       <div className="component-style page-style">
-        <h1 className="font-openai text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4" data-aos="zoom-y-out">Collaborative Story Generation with <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-gray-300">Gistalt.</span></h1>
+
+        <div className="px-16 py-12">
+        <h1 className="font-poppins tracking-normal text-5xl md:text-6xl font-extrabold leading-tighter mb-4" data-aos="zoom-y-out">Collaborative Storytelling</h1>
+        <h1 className="font-poppins tracking-normal text-5xl md:text-6xl font-extrabold leading-tighter mb-4" data-aos="zoom-y-out">with <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-gray-300">Gistalt.</span></h1>
         <br></br><br></br><br></br><br></br><br></br>
         <div class="flex mb-4">
             <div class="w-1/2">
-                <h6 className= "flex-initial w-96 text-sm">Gistalt is a collective storytelling platform where people contribute to stories by generating multimodal content using AI, and decide on the canon of these stories via decentralized autonomous organizations (DAOs).</h6>
+                <h6 className= "flex-initial w-100 text-sm font-poppins tracking-wide font-light">Gistalt is a collective storytelling platform where people contribute to stories by generating multimodal content using AI, and decide on the canon of these stories via decentralized autonomous organizations (DAOs).</h6>
             </div>
             <div class="w-1/2"></div>
         </div>
         <br></br><br></br><br></br><br></br><br></br>
         <TextButton onClickFunc={() => router.push(`/create`)} text="Create story" size='3xl' />
+      </div>
       </div>
     </div>
   )
