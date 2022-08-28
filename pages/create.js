@@ -105,7 +105,7 @@ export default function Create() {
               <label className="mt-6 block mb-2 text-sm font-bold font-medium text-white dark:text-gray-400">How many total gists should be in the story? </label>
 
 
-          <ThemeProvider theme={theme}>
+          {/* <ThemeProvider theme={theme}> */}
 
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
@@ -150,8 +150,7 @@ export default function Create() {
               <FormControlLabel name="storyGistVoteInterval" value="300" control={<Radio />} label="5 minutes" onChange={ handleInputChange }/>
               <FormControlLabel name="storyGistVoteInterval" value="1200" control={<Radio />} label="20 minutes" onChange={ handleInputChange }/>
             </RadioGroup>
-            </ThemeProvider>
-
+            {/* </ThemeProvider> */}
 
             <br></br>
             {/* <label className="block mb-2 text-sm font-bold font-medium text-white dark:text-gray-400">Select Voting Mechanism: </label> */}
