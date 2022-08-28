@@ -13,8 +13,8 @@ function VoteResult(props) {
   const voteResults = props.voteResults, 
   activeProposals = props.activeProposals,
   gistCanonProposalId = props.gistCanonProposalId
-  const [newCanonText, setNewCanonText] = useState();
-  const [newCanonImg, setNewCanonImg] = useState();
+  const [winningCanonText, setWinningCanonText] = useState();
+  const [winningCanonImg, setWinningCanonImg] = useState();
 
     const getPercentage = (voteResults) => {
         // console.log("HELLO", voteResults)
@@ -29,8 +29,8 @@ function VoteResult(props) {
       console.log("activeProposals", activeProposals)
       console.log("gistCanonProposalId", gistCanonProposalId)
       {gistCanonProposalId?(
-        setNewCanonText(activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0]?.data().proposalText),
-        setNewCanonImg(activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0]?.data().proposalImg)
+        setWinningCanonText(activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0]?.data().proposalText),
+        setWinningCanonImg(activeProposals.filter((proposal) => proposal.id === gistCanonProposalId)[0]?.data().proposalImg)
 
       ): console.log("hello")}
     }, [gistCanonProposalId, activeProposals])
@@ -41,14 +41,17 @@ function VoteResult(props) {
       {voteResults !== {} && voteResults ? (
         <div>
           <h4 className="pb-4">Winner</h4>
-          <Accordion className="bg-base-gray border text-light-gray text-sm">
+          {winningCannonText ? (
+            <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionDetails>
               
-              <p>Text: {newCanonText}</p>
-              <img width='200px' src={newCanonImg !== "" ? newCanonImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
+              <p>Text: {winningCanonText}</p>
+              <img width='200px' src={winningCanonImg !== "" ? winningCanonImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
             </AccordionDetails>
 
-          </Accordion>
+          </Accordion>)
+          : <p className=" text-light-gray text-sm">no winner</p>}
+          }
         
           {getPercentage(Object.entries(voteResults)).map(([key, value]) => (
             <div key={key} className="relative pt-1 mx-32">
