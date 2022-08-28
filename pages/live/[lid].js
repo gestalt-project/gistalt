@@ -473,12 +473,22 @@ export default function StoryPage() {
           { userContributedGists ? userContributedGists?.map((doc) => (
           <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionSummary>Gist #{doc.data().gistIndex}</AccordionSummary>
-            <AccordionDetails>
+            {/* <AccordionDetails>
               
               <p>Text: {doc.data().gistCanonText}</p>
               <img width='200px' src={doc.data().gistCanonImg !== "" ? doc.data().gistCanonImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
               <br></br>
               <TextButton onClickFunc={() => mintNFT(doc.data())} text="Mint NFT" size='3xl' />
+            </AccordionDetails> */}
+
+            <AccordionDetails>
+              
+              <img className="mx-auto" width='300px' src={doc.data().gistCanonImg !== "" ? doc.data().gistCanonImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
+              <br></br>
+              <p className=" text-center text-light-gray">Text: {doc.data().gistCanonText}</p><br></br>
+              <div className="flex justify-center pb-4">
+              <TextButton onClickFunc={() => mintNFT(doc.data())} text="Mint NFT" size='3xl' />
+              </div>
             </AccordionDetails>
 
           </Accordion>
