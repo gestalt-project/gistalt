@@ -464,12 +464,12 @@ export default function StoryPage() {
 
       { storyGistIndex > storySnapshot?.data()?.storyNumGists ? (
           <section className='component-style page-style pb-10 px-10'>
-          <TextButton onClickFunc={() => alert("yey")} text="Story finished!" size='3xl' />
-          <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          {/* <TextButton onClickFunc={() => alert("yey")} text="Story finished!" size='3xl' />
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br> */}
           <TextButton onClickFunc={() => router.push(`/stories/${lid}`)} text="View published story" size='3xl' />
-          <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-          <p className='text-light-gray text-lg'>... display contributions here ...</p>
-          <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          <br></br><br></br><br></br><br></br><br></br><br></br>
+          <h3>Your Contributions</h3>
+          <br></br><br></br><br></br>
           { userContributedGists ? userContributedGists?.map((doc) => (
           <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionSummary>Gist #{doc.data().gistIndex}</AccordionSummary>
@@ -484,15 +484,17 @@ export default function StoryPage() {
           </Accordion>
           )) : <p className=" text-light-gray text-sm">no canon to display yet</p>}    
 
-          <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-          <TextButton onClickFunc={mintNFT} text="Mint NFT" size='3xl' />
+          {/* <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          <TextButton onClickFunc={mintNFT} text="Mint NFT" size='3xl' /> */}
         </section>
       )
       :
       <>
       {storyGistStage == 'waiting' && storySnapshot?.data()?.storyOriginator == session.user.name ? (
-      <section className='component-style page-style pb-10 px-10'>
+      <section className='component-style page-width px-10'>
+        <div className='pt-10'>
         <TextButton onClickFunc={handleNext} text="Start story" size='3xl' />
+        </div>
       </section>
         ) :
         storyGistStage == 'waiting' && storySnapshot?.data()?.storyOriginator !== session.user.name ? (
@@ -500,30 +502,23 @@ export default function StoryPage() {
           <TextButton onClickFunc={() => alert("Ask the story originator to begin the story")} text="Story has not yet begun" size='3xl' />
         </section>
           ) :
-        <section className='component-style page-style pb-10 px-10'>
-        <div className='max-w-3xl mx-auto'>
+        <section className='component-style page-style pb-10'>
+        {/* <div className='max-w-3xl mx-auto'> */}
           <div className='flex items-center justify-between py-6'>
-            <h1 className='text-light-gray text-lg'>{storyTitle}</h1>
+            <h3 className="">{storyTitle}</h3>
             <div className='flex items-center'>
             </div>
           </div>
           <p className='text-light-gray text-sm'>{storyDescription}</p>
-          <br></br><br></br>
-          <img className="w-60 h-60" src={storyCoverImg} />
+          <br></br><br></br><br></br>
+          <img className="w-96 h-96" src={storyCoverImg} />
           <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-          </div>
+          {/* </div> */}
           <Canon db={db} session={session} sid={lid} canonGists={canonGists}/>
 
         </section>
 
         }
-        <section className='component-style page-style'>
-        <p className='text-light-gray text-sm'>Stage: {storyGistStage}</p>
-        <div className="overflow-hidden h-2 my-2 flex rounded bg-gray-200">
-          <div style={{ width: `${100 - progressPercentage}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
-        </div>
-        </section>
-
           { storyGistStage == 'propose' ? (
             
             <div>
@@ -544,8 +539,19 @@ export default function StoryPage() {
           ) : null 
         
           }
+          {/* <footer style={{ position: 'fixed', bottom: 0}} className="bg-white"> */}
+        <section style={{ position: 'fixed', bottom: 0}} className=' footer-style'>
+          <div className="px-32 py-2 pt-4">
+            <p className='text-light-gray text-sm'>Stage: {storyGistStage}</p>
+            <div className="overflow-hidden h-2 my-4 flex rounded bg-gray-200">
+              <div style={{ width: `${100 - progressPercentage}%` }} className=" pt-6 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+            </div>
+            </div>
+        </section>
+        {/* </footer> */}
           </>
         }
+
                     {/* <section className='component-style page-style pb-10 px-10'>
           <TextButton onClickFunc={() => setStoryGistStage('propose')} text="set stage: propose" size='3xl' />
           <TextButton onClickFunc={() => setStoryGistStage('vote')} text="set stage: vote" size='3xl' />

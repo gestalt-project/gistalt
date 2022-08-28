@@ -15,12 +15,23 @@ function GistProposals(props) {
           { proposals? proposals?.map((doc, index) => (
           <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionSummary>Proposal # {index + 1}</AccordionSummary>
+
+
             <AccordionDetails>
+              
+              <img className="mx-auto" width='300px' src={doc.data().proposalImg !== "" ? doc.data().proposalImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
+              <br></br>
+              <p className=" text-center text-light-gray">Text: {doc.data().proposalText}</p><br></br>
+              <div className="flex justify-center pb-4">
+              </div>
+            </AccordionDetails>
+
+
+            {/* <AccordionDetails>
               
               <p>Text: {doc.data().proposalText}</p>
               <img width='200px' src={doc.data().proposalImg !== "" ? doc.data().proposalImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
-              {/* <TextButton onClickFunc={() => router.push(`/gists/${doc.id}`)} text="View proposal details" size='3xl' /> */}
-            </AccordionDetails>
+            </AccordionDetails> */}
 
           </Accordion>
           )) : <p className=" text-light-gray text-sm">no canon to display yet</p>}    

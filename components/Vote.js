@@ -53,9 +53,9 @@ function Vote(props) {
 
 
   return (
-    <section className={'component-style px-0 md:px-0'}>
+    <div>
       <br></br><br></br><br></br><br></br><br></br><br></br>
-      <h3 className="mx-24 mb-12">Proposals</h3>
+      <h3 className="mb-12">Proposals</h3>
       {activeProposals?.map((doc) => (
         <div key={doc.id} onClick={() => handleProposalChange(doc.id)} className={`${proposalSelect === doc.id ? "border-blue-500" : ""} border-sky-500 mx-12 my-6 flex bg-github-gray border border-gray-300 rounded-xl overflow-hidden justify-start  transition duration-100 hover:scale-[1.01] `}>
           <div className="relative w-96 h-96 flex-shrink-0">
@@ -72,10 +72,7 @@ function Vote(props) {
       <div className="container mx-auto mt-32">
         <TextButton onClickFunc={handleVote} text="Cast Vote" size='3xl' />
       </div>
-
-
-
-    </section>
+      </div>
 
   )
 }
