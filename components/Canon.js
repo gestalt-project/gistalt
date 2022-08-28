@@ -12,11 +12,11 @@ function Canon(props) {
   return (
     <div>
 
-        <h1 className='text-light-gray text-lg'>Canon</h1>
+          <h4 className="">Canon</h4>
           <br></br><br></br>
 
           { canonGists? canonGists?.map((doc) => (
-          <Accordion className="bg-base-gray border text-light-gray text-sm">
+          <Accordion className="bg-base-gray border text-white text-sm">
             <AccordionSummary>Gist #{doc.data().gistIndex}</AccordionSummary>
             <AccordionDetails>
               

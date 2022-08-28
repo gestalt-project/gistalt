@@ -27,6 +27,9 @@ html {
     .page-style {
       padding: 50px 100px 50px 100px;
     }
+    .page-width {
+      padding: 50px 100px 5px 100px;
+    }
 
     .main-editor {
         min-height: 500px;

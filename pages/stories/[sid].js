@@ -59,17 +59,14 @@ export default function StoryPage() {
         {/* <div className='max-w-3xl mx-auto'> */}
         <div className="page-style">
           <div className='flex items-center justify-between py-6'>
-            <h2 className='text-light-gray text-lg'>{storyTitle}</h2>
-            <div className='flex items-center'>
+          <h3 className="">{storyTitle}</h3>
+            {/* <div className='flex items-center'>
               <IconButton onClickFunc={() => setModalType({ func: 'delete', datatype: 'all' })} icon='more_vert' />
-              {/* <IconButton onClickFunc={() => setGistDisplay(!gistDisplay)} icon='library_books' color={gistDisplay ? 'blue' : 'gray'} />
-              <IconButton onClickFunc={() => setProposalDisplay(!proposalDisplay)} icon='article' color={proposalDisplay ? 'blue' : 'gray'} /> */}
-            </div>
+            </div> */}
           </div>
           <p className='text-light-gray text-sm'>{storyDescription}</p>
-          <br></br>
-          <br></br>
-          <img className="w-60 h-60" src={storyCoverImg} />
+          <br></br><br></br><br></br>
+          <img className="w-96 h-96" src={storyCoverImg} />
 
 
           <br></br><br></br><br></br><br></br><br></br><br></br>

@@ -19,9 +19,9 @@ function AllStories(props) {
 
   return (
     <section className={'font-openai component-style page-style px-10 md:px-0'}>
-      <div className='text-sm'>
+      {/* <div className='text-sm'> */}
         <div className="container mx-auto">
-            <h3 className="mx-24 py-4">All Stories</h3>
+            <h3 className="mx-16 py-4">All Stories</h3>
             <div className="flex flex-wrap mx-12 my-4">
               {storiesSnapshot?.docs.map((doc) => (
                 <div key={doc.id} className="lg:w-1/4 md:w-1/2 w-full p-1 my-3">
@@ -38,7 +38,7 @@ function AllStories(props) {
                   </div>
                 </div>
               ))}
-            </div>
+            {/* </div> */}
         </div>
       </div>
 

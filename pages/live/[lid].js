@@ -491,8 +491,10 @@ export default function StoryPage() {
       :
       <>
       {storyGistStage == 'waiting' && storySnapshot?.data()?.storyOriginator == session.user.name ? (
-      <section className='component-style page-style pb-10 px-10'>
+      <section className='component-style page-width px-10'>
+        <div className='pt-10'>
         <TextButton onClickFunc={handleNext} text="Start story" size='3xl' />
+        </div>
       </section>
         ) :
         storyGistStage == 'waiting' && storySnapshot?.data()?.storyOriginator !== session.user.name ? (
@@ -500,18 +502,18 @@ export default function StoryPage() {
           <TextButton onClickFunc={() => alert("Ask the story originator to begin the story")} text="Story has not yet begun" size='3xl' />
         </section>
           ) :
-        <section className='component-style page-style pb-10 px-10'>
-        <div className='max-w-3xl mx-auto'>
+        <section className='component-style page-style pb-10'>
+        {/* <div className='max-w-3xl mx-auto'> */}
           <div className='flex items-center justify-between py-6'>
-            <h1 className='text-light-gray text-lg'>{storyTitle}</h1>
+            <h3 className="">{storyTitle}</h3>
             <div className='flex items-center'>
             </div>
           </div>
           <p className='text-light-gray text-sm'>{storyDescription}</p>
-          <br></br><br></br>
-          <img className="w-60 h-60" src={storyCoverImg} />
+          <br></br><br></br><br></br>
+          <img className="w-96 h-96" src={storyCoverImg} />
           <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-          </div>
+          {/* </div> */}
           <Canon db={db} session={session} sid={lid} canonGists={canonGists}/>
 
         </section>
@@ -519,7 +521,7 @@ export default function StoryPage() {
         }
         <section className='component-style page-style'>
         <p className='text-light-gray text-sm'>Stage: {storyGistStage}</p>
-        <div className="overflow-hidden h-2 my-2 flex rounded bg-gray-200">
+        <div className="overflow-hidden h-2 my-4 flex rounded bg-gray-200">
           <div style={{ width: `${100 - progressPercentage}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
         </div>
         </section>

@@ -46,11 +46,12 @@ export default function StoryPage() {
 
       <Header />
 
-      <section className='component-style pb-10 px-10'>
+      <section className='component-style page-style pb-10 px-10'>
+        
         {/* <div className='max-w-3xl mx-auto'> */}
         <div className="page-style">
-
-        <h1 className='text-light-gray text-lg'>Your Proposals</h1>
+        <h3>Your Proposals</h3>
+        {/* <h1 className='text-light-gray text-lg'>Your Proposals</h1> */}
 
           <br></br><br></br><br></br><br></br><br></br><br></br>
           <UserProposals proposals={proposalsData}/>
