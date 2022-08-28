@@ -37,10 +37,10 @@ function VoteResult(props) {
 
   return (
     <section className={'component-style px-0 md:px-0'}>
-      <h3 className="mx-24 my-12">Results</h3>
+      <h3 className="my-12">Results</h3>
       {voteResults !== {} && voteResults ? (
         <div>
-          <h1>Winner: </h1>
+          <h4 className="">Winner</h4>
           <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionDetails>
               

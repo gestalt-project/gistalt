@@ -15,15 +15,23 @@ function Canon(props) {
           <h4 className="">Canon</h4>
           <br></br><br></br>
 
-          { canonGists? canonGists?.map((doc) => (
+          { canonGists?.docs?.length > 0 ? canonGists?.map((doc) => (
           <Accordion className="bg-base-gray border text-white text-sm">
             <AccordionSummary>Gist #{doc.data().gistIndex}</AccordionSummary>
             <AccordionDetails>
+
+            <img className="mx-auto" width='300px' src={doc.data().gistCanonImg !== "" ? doc.data().gistCanonImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
+              <br></br>
+              <p className=" text-center text-light-gray">TText: {doc.data().gistCanonText}</p><br></br>
+              <div className="flex justify-center pb-4">
+              <TextButton onClickFunc={() => router.push(`/gists/${doc.id}`)} text="View gist details" size='3xl' />
+              </div>
               
-              <p>Text: {doc.data().gistCanonText}</p>
+              {/* <p>Text: {doc.data().gistCanonText}</p>
               <img width='200px' src={doc.data().gistCanonImg !== "" ? doc.data().gistCanonImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
               <br></br>
-              <TextButton onClickFunc={() => router.push(`/gists/${doc.id}`)} text="View gist details" size='3xl' />
+              <TextButton onClickFunc={() => router.push(`/gists/${doc.id}`)} text="View gist details" size='3xl' /> */}
+
             </AccordionDetails>
 
           </Accordion>

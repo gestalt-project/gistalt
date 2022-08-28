@@ -73,8 +73,8 @@ export default function StoryPage() {
           <Canon db={db} session={session} sid={sid} canonGists={canonGists}/>
 
         </div>
-              <br></br><br></br><br></br><br></br><br></br>
-              <div className="page-style">
+        <div className="page-width">
+        <br></br><br></br>
         <TextButton onClickFunc={() => router.push(`/live/${sid}`)} text="Join story" size='3xl' />
         </div>
       </section>

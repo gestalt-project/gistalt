@@ -464,11 +464,10 @@ export default function StoryPage() {
 
       { storyGistIndex > storySnapshot?.data()?.storyNumGists ? (
           <section className='component-style page-style pb-10 px-10'>
-          <TextButton onClickFunc={() => alert("yey")} text="Story finished!" size='3xl' />
-          <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          {/* <TextButton onClickFunc={() => alert("yey")} text="Story finished!" size='3xl' />
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br> */}
           <TextButton onClickFunc={() => router.push(`/stories/${lid}`)} text="View published story" size='3xl' />
           <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-          <p className='text-light-gray text-lg'>... display contributions here ...</p>
           <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
           { userContributedGists ? userContributedGists?.map((doc) => (
           <Accordion className="bg-base-gray border text-light-gray text-sm">
@@ -484,8 +483,8 @@ export default function StoryPage() {
           </Accordion>
           )) : <p className=" text-light-gray text-sm">no canon to display yet</p>}    
 
-          <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-          <TextButton onClickFunc={mintNFT} text="Mint NFT" size='3xl' />
+          {/* <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          <TextButton onClickFunc={mintNFT} text="Mint NFT" size='3xl' /> */}
         </section>
       )
       :
