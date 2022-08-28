@@ -484,7 +484,7 @@ export default function StoryPage() {
 
             <AccordionDetails>
               
-              <img className="mx-auto" width='300px' src={doc.data().gistCanonImg !== "" ? doc.data().gistCanonImg : "https://media.discordapp.net/attachments/979435099349200938/1013281119673798686/unknown.png"}/>
+              <img className="mx-auto" width='300px' src={doc.data().gistCanonImg !== "" ? doc.data().gistCanonImg : "https://gistalt.s3.us-west-1.amazonaws.com/placeholder.png"}/>
               <br></br>
               <p className=" text-center text-light-gray">Text: {doc.data().gistCanonText}</p><br></br>
               <div className="flex justify-center pb-4">

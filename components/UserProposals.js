@@ -15,7 +15,7 @@ function UserProposals(props) {
             <AccordionSummary>Proposal # {index + 1}</AccordionSummary>
             <AccordionDetails>
               
-              <img className="mx-auto" width='300px' src={doc.data().proposalImg !== "" ? doc.data().proposalImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
+              <img className="mx-auto" width='300px' src={doc.data().proposalImg !== "" ? doc.data().proposalImg : "https://gistalt.s3.us-west-1.amazonaws.com/placeholder.png"}/>
               <br></br>
               <p className=" text-center text-light-gray">Text: {doc.data().proposalText}</p><br></br>
               <div className="flex justify-center pb-4">

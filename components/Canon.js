@@ -20,7 +20,7 @@ function Canon(props) {
             <AccordionSummary>Gist #{doc.data().gistIndex}</AccordionSummary>
             <AccordionDetails>
 
-            <img className="mx-auto" width='300px' src={doc.data().gistCanonImg !== "" ? doc.data().gistCanonImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
+            <img className="mx-auto" width='300px' src={doc.data().gistCanonImg !== "" ? doc.data().gistCanonImg : "https://gistalt.s3.us-west-1.amazonaws.com/placeholder.png"}/>
               <br></br>
               <p className=" text-center text-light-gray">TText: {doc.data().gistCanonText}</p><br></br>
               <div className="flex justify-center pb-4">

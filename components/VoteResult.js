@@ -46,7 +46,7 @@ function VoteResult(props) {
             <AccordionDetails>
               
               <p>Text: {winningCanonText}</p>
-              <img width='200px' src={winningCanonImg !== "" ? winningCanonImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
+              <img width='200px' src={winningCanonImg !== "" ? winningCanonImg : "https://gistalt.s3.us-west-1.amazonaws.com/placeholder.png"}/>
             </AccordionDetails>
 
           </Accordion>)

@@ -83,7 +83,7 @@ const handleSubmitProposal = async(event) => {
 
             <AccordionDetails>
               
-              <img className="mx-auto" width='300px' src={proposalData.proposalImg !== "" ? proposalData.proposalImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
+              <img className="mx-auto" width='300px' src={proposalData.proposalImg !== "" ? proposalData.proposalImg : "https://gistalt.s3.us-west-1.amazonaws.com/placeholder.png"}/>
               <br></br>
               <p className=" text-center text-light-gray">Text: {proposalData.proposalText}</p><br></br>
               <div className="flex justify-center pb-4">
