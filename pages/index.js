@@ -33,7 +33,7 @@ export default function home() {
       </Head>
       <Header />
       <div className="component-style page-style">
-        <h1 className="font-mono text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4" data-aos="zoom-y-out">Collaborative Story Generation with <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-gray-300">Gistalt.</span></h1>
+        <h1 className="font-openai text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4" data-aos="zoom-y-out">Collaborative Story Generation with <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-gray-300">Gistalt.</span></h1>
         <br></br><br></br><br></br><br></br><br></br>
         <div class="flex mb-4">
             <div class="w-1/2">
