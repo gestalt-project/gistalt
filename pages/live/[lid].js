@@ -467,8 +467,9 @@ export default function StoryPage() {
           {/* <TextButton onClickFunc={() => alert("yey")} text="Story finished!" size='3xl' />
           <br></br><br></br><br></br><br></br><br></br><br></br><br></br> */}
           <TextButton onClickFunc={() => router.push(`/stories/${lid}`)} text="View published story" size='3xl' />
-          <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-          <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          <br></br><br></br><br></br><br></br><br></br><br></br>
+          <h3>Your Contributions</h3>
+          <br></br><br></br><br></br>
           { userContributedGists ? userContributedGists?.map((doc) => (
           <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionSummary>Gist #{doc.data().gistIndex}</AccordionSummary>
@@ -543,7 +544,7 @@ export default function StoryPage() {
           <div className="px-32 py-2 pt-4">
             <p className='text-light-gray text-sm'>Stage: {storyGistStage}</p>
             <div className="overflow-hidden h-2 my-4 flex rounded bg-gray-200">
-              <div style={{ width: `${100 - progressPercentage}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+              <div style={{ width: `${100 - progressPercentage}%` }} className=" pt-6 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
             </div>
             </div>
         </section>

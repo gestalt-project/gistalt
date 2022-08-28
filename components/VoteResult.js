@@ -40,7 +40,7 @@ function VoteResult(props) {
       <h3 className="my-12">Results</h3>
       {voteResults !== {} && voteResults ? (
         <div>
-          <h4 className="">Winner</h4>
+          <h4 className="pb-4">Winner</h4>
           <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionDetails>
               

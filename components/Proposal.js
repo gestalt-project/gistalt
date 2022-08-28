@@ -74,12 +74,22 @@ const handleSubmitProposal = async(event) => {
           <br></br>
           <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionSummary>Gist #{currentGistIndex}</AccordionSummary>
-            <AccordionDetails>
+            {/* <AccordionDetails>
               
               <p>Text: {proposalData.proposalText}</p>
               <img width='200px' src={proposalData.proposalImg !== "" ? proposalData.proposalImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
             
+            </AccordionDetails> */}
+
+            <AccordionDetails>
+              
+              <img className="mx-auto" width='300px' src={proposalData.proposalImg !== "" ? proposalData.proposalImg : "https://image.pngaaa.com/721/1915721-middle.png"}/>
+              <br></br>
+              <p className=" text-center text-light-gray">Text: {proposalData.proposalText}</p><br></br>
+              <div className="flex justify-center pb-4">
+              </div>
             </AccordionDetails>
+            
 
           </Accordion>
           </div>
