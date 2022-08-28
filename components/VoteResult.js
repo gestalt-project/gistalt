@@ -41,7 +41,7 @@ function VoteResult(props) {
       {voteResults !== {} && voteResults ? (
         <div>
           <h4 className="pb-4">Winner</h4>
-          {winningCannonText ? (
+          {winningCanonText ? (
             <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionDetails>
               
@@ -50,7 +50,7 @@ function VoteResult(props) {
             </AccordionDetails>
 
           </Accordion>)
-          : <p className=" text-light-gray text-sm">no winner</p>}
+          : <p className=" text-light-gray text-sm">no winner</p>
           }
         
           {getPercentage(Object.entries(voteResults)).map(([key, value]) => (
