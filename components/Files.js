@@ -18,7 +18,7 @@ function AllStories(props) {
     `${count} ${noun}${count !== 1 ? suffix : ''}`;
 
   return (
-    <section className={'component-style page-style px-10 md:px-0'}>
+    <section className={'font-openai component-style page-style px-10 md:px-0'}>
       <div className='text-sm'>
         <div className="container mx-auto">
             <h3 className="mx-24 py-4">All Stories</h3>

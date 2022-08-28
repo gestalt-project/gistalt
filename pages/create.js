@@ -11,6 +11,11 @@ import { createStory } from '../components/handleData';
 import { GenerateImg } from '../components/GenerateImg';
 import { Tooltip, Radio, RadioGroup, FormControlLabel } from "@mui/material";
 import { useRouter } from 'next/dist/client/router'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+
+import { pink } from '@mui/material/colors';
+
 
 export default function Create() {
   const { data: session, status } = useSession();
@@ -26,6 +31,8 @@ export default function Create() {
     storyCoverImg: null,
     // storyVotingMechanism: '',
   })
+
+  
 
   const [messageFromChild, getMessageFromChild] = useState(
     "Parent component awaiting GenerateImg message"
@@ -59,6 +66,8 @@ export default function Create() {
     console.log("setting storyData: ", event.target.name, event.target.value);
     setStoryData({ ...storyData, [event.target.name]: event.target.value })
   }
+
+
 
   return (
     <div>
@@ -94,15 +103,24 @@ export default function Create() {
               <br></br>
 
               <label className="mt-6 block mb-2 text-sm font-bold font-medium text-white dark:text-gray-400">How many total gists should be in the story? </label>
+
+
+          <ThemeProvider theme={theme}>
+
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="female"
               name="radio-buttons-group"
             >
 
-              <FormControlLabel name="storyNumGists" value="3" control={<Radio />} label="3 gists" onChange={ handleInputChange }/>
-              <FormControlLabel name="storyNumGists" value="5" control={<Radio />} label="5 gists" onChange={ handleInputChange }/>
-              <FormControlLabel name="storyNumGists" value="10" control={<Radio />} label="10 gists" onChange={ handleInputChange }/>
+              <FormControlLabel name="storyNumGists" value="3" control={<Radio         sx={{
+          color: "d",
+          '&.Mui-checked': {
+            color: pink[600],
+          },
+        }}/>} label="3 gists" onChange={ handleInputChange }/>
+              <FormControlLabel name="storyNumGists" value="5" control={<Radio sx={{ color: "primary", '&.Mui-checked': { color: "primary", }, }}/>} label="5 gists" onChange={ handleInputChange }/>
+              <FormControlLabel name="storyNumGists" value="10" control={<Radio sx={{ color: "secondary", '&.Mui-checked': { color: "primary", }, }}/>} label="10 gists" onChange={ handleInputChange }/>
             </RadioGroup>
 
               <label className="mt-6 block mb-2 text-sm font-bold font-medium text-white dark:text-gray-400">How long should the proposal period be / gist? </label>
@@ -110,6 +128,7 @@ export default function Create() {
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="female"
               name="radio-buttons-group"
+
             >
               <FormControlLabel  name="storyGistProposeInterval" value="15" control={<Radio />} label="dev 15s" onChange={ handleInputChange }/>
               <FormControlLabel name="storyGistProposeInterval" value="30" control={<Radio />} label="30 seconds" onChange={ handleInputChange }/>
@@ -131,6 +150,8 @@ export default function Create() {
               <FormControlLabel name="storyGistVoteInterval" value="300" control={<Radio />} label="5 minutes" onChange={ handleInputChange }/>
               <FormControlLabel name="storyGistVoteInterval" value="1200" control={<Radio />} label="20 minutes" onChange={ handleInputChange }/>
             </RadioGroup>
+            </ThemeProvider>
+
 
             <br></br>
             {/* <label className="block mb-2 text-sm font-bold font-medium text-white dark:text-gray-400">Select Voting Mechanism: </label> */}
