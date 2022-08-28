@@ -32,18 +32,6 @@ export default function Create() {
     // storyVotingMechanism: '',
   })
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        // Purple and green play nicely together.
-        main: '#00bcd4',
-      },
-      secondary: {
-        // This is green.A700 as hex.
-        main: '#FFFFFF',
-      },
-    },
-  });
   
 
   const [messageFromChild, getMessageFromChild] = useState(
