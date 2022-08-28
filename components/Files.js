@@ -28,13 +28,13 @@ function AllStories(props) {
                   <div onClick={() => router.push(`/stories/${doc.id}`)} className="hover:border-2 hover:scale-[1.02] border-blue-500 bg-github-gray max-w-xs m-1 rounded-2xl overflow-hidden shadow-lg">
                     <img className="object-cover h-48 w-96" src={doc.data().storyCoverImg} alt=""/>
                     <div className="px-6 py-4">
-                      <p className="text-gray-400 font-semibold text-xs pb-2">{pluralize(doc.data().storyNumContributors, 'contributor')}</p>
+                      <p className="text-gray-400 font-semibold text-xs pb-2">{doc.data().storyGistIndex}/{doc.data().storyNumGists} Gists | {doc.data().storyTimestamp?.toDate().toLocaleDateString()}</p>
                       <div className="line-clamp-1 font-semibold text-lg text-white mb-3">{doc.data().storyTitle}</div>
                       {/* <p className="line-clamp-2 text-gray-100 text-xs overflow-hidden">{doc.data().storyDescription}</p> */}
                     </div>
-                    <div className="px-6 pb-2">
+                    {/* <div className="px-6 pb-2">
                       <p className="text-center font-bold text-gray-400 text-xs">{doc.data().storyGistIndex}/{doc.data().storyNumGists} Gists | {doc.data().storyTimestamp?.toDate().toLocaleDateString()}</p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ))}
