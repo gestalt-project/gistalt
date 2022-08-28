@@ -15,7 +15,7 @@ function Canon(props) {
           <h4 className="">Canon</h4>
           <br></br><br></br>
 
-          { canonGists?.docs?.length > 0 ? canonGists?.map((doc) => (
+          { canonGists? canonGists?.map((doc) => (
           <Accordion className="bg-base-gray border text-white text-sm">
             <AccordionSummary>Gist #{doc.data().gistIndex}</AccordionSummary>
             <AccordionDetails>

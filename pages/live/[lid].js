@@ -401,6 +401,7 @@ export default function StoryPage() {
         // return {
             // success: true,
             console.log("Check out your transaction on Etherscan: https://goerli.etherscan.io/tx/" + txHash)
+            alert("Check out your transaction on Etherscan: https://goerli.etherscan.io/tx/" + txHash)
         // }
     } catch (error) {
         // return {
