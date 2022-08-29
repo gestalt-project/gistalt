@@ -75,7 +75,7 @@ function MyApp({ Component, pageProps }) {
           <RainbowKitProvider chains={chains} modalSize="compact"
             theme={darkTheme({
               accentColor: '#0d76fb',
-              accentColorForeground: 'white',
+              accentColorForeground: '#111414',
               borderRadius: 'small',
               fontStack: 'system',
               overlayBlur: 'small',

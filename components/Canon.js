@@ -16,6 +16,7 @@ function Canon(props) {
           <br></br><br></br>
 
           { canonGists? canonGists?.map((doc) => (
+            <div className="bg-base-gray">
           <Accordion className="bg-base-gray border text-white text-sm">
             <AccordionSummary>Gist #{doc.data().gistIndex}</AccordionSummary>
             <AccordionDetails>
@@ -35,6 +36,7 @@ function Canon(props) {
             </AccordionDetails>
 
           </Accordion>
+          </div>
           )) : <p className=" text-light-gray text-sm">no canon to display yet</p>}    
 
     </div>

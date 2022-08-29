@@ -3,19 +3,13 @@
 html {
   width: 100%;
   height: 100%;
-  background-color: #101414;
+  background-color: #111414;
 }
 
 
 @layer components {
-    .option {
-        @apply cursor-pointer hover:bg-mid-gray transition duration-200 ease-out p-2 rounded-lg;
-    }
-    .rdw-editor-toolbar.hide-toolbar {
-        display: none;
-    }
     .component-style {
-      background-color: #101414;
+      background-color: #111414;
       color: #FFFFFF;
 
       font: 5px 'Poppins', sans-serif;
@@ -26,42 +20,16 @@ html {
       width: 100%;
       font: 5px 'Poppins', sans-serif;
     }
-    /* .fancy-font {
-
-    } */
-
     .page-style {
       padding: 50px 100px 150px 100px;
     }
     .page-width {
       padding: 5px 100px 5px 100px;
     }
-
-    .main-editor {
-        min-height: 500px;
-        overflow: auto;
-        background-color: white;
-        /* shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-        display: flex;
-        border-style: solid;
-        border-color: #eeeeee;
-        border-width: 1px;
-        padding: 30px 30px 30px 50px;
-        margin: 50px 5% 200px 5%;
-        /* min-h-3/4 mt-6   shadow-lg flex mx-10 mb-12 border text-white p-10 */
-      }
-
-      .superFancyBlockquote {
-        color: #999;
-        font-family: 'Hoefler Text', Georgia, serif;
-        font-style: italic;
-        text-align: center;
-      }
-    }
-
     .generate-img {
       text-align: center;
     }
+  }
     
     /* HIDE RADIO */
     [type=radio] { 

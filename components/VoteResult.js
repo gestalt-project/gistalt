@@ -44,7 +44,7 @@ function VoteResult(props) {
           {winningCanonText ? (
             <Accordion className="bg-base-gray border text-light-gray text-sm">
             <AccordionDetails>
-              
+              <br></br>
               <p>Text: {winningCanonText}</p>
               <img width='200px' src={winningCanonImg !== "" ? winningCanonImg : "https://gistalt.s3.us-west-1.amazonaws.com/placeholder.png"}/>
             </AccordionDetails>
@@ -52,6 +52,7 @@ function VoteResult(props) {
           </Accordion>)
           : <p className=" text-light-gray text-sm">no winner</p>
           }
+          <br></br><br></br><br></br>
         
           {getPercentage(Object.entries(voteResults)).map(([key, value]) => (
             <div key={key} className="relative pt-1 mx-32">
